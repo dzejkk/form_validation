@@ -10,21 +10,49 @@
   <body>
     <div class="wrapper">
       <form action="">
-        <fieldset>
-          <label for="name">First Name*</label>
-          <input type="text" name="name" id="name" />
-          <label for="last-name">Last Name*</label>
-          <input type="text" name="last-name" id="last-name" />
+        <fieldset class="fieldset-1">
+          <div>
+            <label class="input-name" for="name">First Name*</label>
+            <input type="text" name="name" id="name" />
+          </div>
+          <div>
+            <label class="input-name" for="last-name">Last Name*</label>
+            <input type="text" name="last-name" id="last-name" />
+          </div>
         </fieldset>
 
         <fieldset>
-          <label for="email">Email Adress *</label>
+          <label class="input-name" for="email">Email Adress *</label>
           <input type="email" name="email" id="email" />
         </fieldset>
 
-        <fieldset>
-          <label for="radio-general-enquiry">General Enquiry</label>
+        <fieldset class="fieldset-3">
+          <div class="radio-wrap">
+            <input type="radio" name="radio-general-enquiry" id="radio-btn" />
+            <label for="radio-general-enquiry">General Enquiry</label>
+          </div>
+
+          <div class="radio-wrap">
+            <input type="radio" name="radio-support-request" id="radio-btn" />
+            <label for="radio-support-request">Support Request</label>
+          </div>
         </fieldset>
+
+        <fieldset>
+          <div class="text-area-wrap">
+            <label for="message">Message *</label>
+            <textarea name="message" id="message"></textarea>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <input type="checkbox" name="check-box" id="check-box" />
+          <label for="check-box"
+            >I consent to beign contacted byt the team *</label
+          >
+        </fieldset>
+
+        <button class="submit-btn" id="submit-btn">Submit</button>
       </form>
     </div>
   </body>

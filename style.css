@@ -1,0 +1,22 @@
+.input-name {
+    display: block;
+}
+
+
+
+.fieldset-1 {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.fieldset-3 {
+    display: flex;
+    gap: 1rem;
+}
+
+.radio-wrap {
+    border: 1px solid black;
+    padding: 0.5rem;
+    border-radius: 12px;
+}
