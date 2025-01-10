@@ -1,22 +1,42 @@
-.input-name {
-    display: block;
+/* BASIC LAYOUT*/
+
+body {
+  min-height: 80dvh;
+  display: grid;
+  place-items: center;
+}
+
+fieldset {
+    /* border: 1px solid transparent; */ 
 }
 
 
+.wrapper {
+  width: 100%;
+  max-width: clamp(375px, 80%, 620px);
+  margin: auto;
+}
+
+.input-name {
+  display: block;
+}
 
 .fieldset-1 {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  /*justify-content: center;
+  align-items: center;*/
 }
 
 .fieldset-3 {
-    display: flex;
-    gap: 1rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .radio-wrap {
-    border: 1px solid black;
-    padding: 0.5rem;
-    border-radius: 12px;
+  border: 1px solid black;
+  padding: 0.5rem;
+  border-radius: 12px;
 }
