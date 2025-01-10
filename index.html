@@ -1,15 +1,31 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite App</title>
+    <script src="main.js" defer></script>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <h1>hello</h1>
-    <p>say hello</p>
-    <h1>honka</h1>
-    <script src="/main.js"></script>
+    <div class="wrapper">
+      <form action="">
+        <fieldset>
+          <label for="name">First Name*</label>
+          <input type="text" name="name" id="name" />
+          <label for="last-name">Last Name*</label>
+          <input type="text" name="last-name" id="last-name" />
+        </fieldset>
+
+        <fieldset>
+          <label for="email">Email Adress *</label>
+          <input type="email" name="email" id="email" />
+        </fieldset>
+
+        <fieldset>
+          <label for="radio-general-enquiry">General Enquiry</label>
+        </fieldset>
+      </form>
+    </div>
   </body>
 </html>
