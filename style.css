@@ -7,9 +7,8 @@ body {
 }
 
 fieldset {
-    /* border: 1px solid transparent; */ 
+  /* border: 1px solid transparent; */
 }
-
 
 .wrapper {
   width: 100%;
@@ -39,4 +38,18 @@ fieldset {
   border: 1px solid black;
   padding: 0.5rem;
   border-radius: 12px;
+}
+
+/* VALIDATION */
+
+/*
+input:required {
+    border: 2px solid black;
+}
+
+*/
+
+
+input:user-invalid {  /*nefunguje neviem preco */
+  border: 2px solid red;
 }
