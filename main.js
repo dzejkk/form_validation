@@ -51,7 +51,7 @@ const inputFields = {
   name: document.getElementById("name"),
   lastName: document.getElementById("last-name"),
   email: document.getElementById("email"),
-  radio: document.getElementById("radio-btn"),
+  radio: document.getElementById("radio-btn"), //  pozor viac elementov
   textArea: document.getElementById("text-area"),
   checkBox: document.getElementById("check-box"),
 };
@@ -85,7 +85,7 @@ const validationMessages = {
 
 function showError(field) {
   const input = inputFields[field];
-  const errorElement = input.nextElementSibling;
+  const errorElement = input.nextElementSibling; // nahradit custom
 
   if (input.validity.valid) {
     errorElement.textContent = "";
