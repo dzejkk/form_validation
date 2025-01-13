@@ -9,7 +9,7 @@
   </head>
   <body>
     <div class="wrapper">
-      <form action="">
+      <form action="" novalidate>
         <h1>Contact Us</h1>
         <fieldset class="fieldset-1">
           <div>
@@ -18,13 +18,20 @@
           </div>
           <div>
             <label class="input-name" for="last-name">Last Name*</label>
-            <input required type="text" name="last-name" id="last-name" minlength="3"/>
+            <input
+              required
+              type="text"
+              name="last-name"
+              id="last-name"
+              minlength="3"
+            />
           </div>
         </fieldset>
 
         <fieldset>
           <label class="input-name" for="email">Email Adress *</label>
-          <input minlength="8" type="email" name="email" id="email" required />
+          <input type="email" name="email" id="email" required minlength="8" />
+          <span class="error" aria-live="polite"></span>
         </fieldset>
 
         <fieldset class="fieldset-3">
