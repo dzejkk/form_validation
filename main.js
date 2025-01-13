@@ -86,4 +86,19 @@ const validationMessages = {
 function showError(field) {
   const input = inputFields[field];
   const errorElement = input.nextElementSibling;
+
+  if (input.validity.valid) {
+    errorElement.textContent = "";
+    errorElement.className = "error";
+    return;
+  }
+
+  if (input.validity.valueMissing) {
+    errorElement.textContent = validationMessages[field].required;
+  } else if (input.validity.tooShort || input.validity.typeMismatch) {
+    errorElement.textContent =
+      validationMessages[field].short || validationMessages[field].invalid;
+  }
+
+  errorElement.className = "error active";
 }
