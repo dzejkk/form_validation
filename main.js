@@ -1,3 +1,7 @@
+///////////////////////* MOST SIMPLE APROACH USING CONSTRAINS API */
+
+/*
+
 const form = document.querySelector("form");
 const email = document.getElementById("email");
 const emailError = document.querySelector("#email + span.error");
@@ -36,3 +40,18 @@ function showError() {
   // Add the `active` class
   emailError.className = "error active";
 }
+
+*/
+
+//////////////* EXPANDED VERSION TO WHOLE FORM */
+
+const Form = document.getElementById("form");
+
+const inputFields = {
+  name: document.getElementById("name"),
+  lastName: document.getElementById("last-name"),
+  email: document.getElementById("email"),
+  radio: document.getElementById("radio-btn"),
+  textArea: document.getElementById("text-area"),
+  checkBox: document.getElementById("check-box"),
+};
