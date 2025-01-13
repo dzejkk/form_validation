@@ -55,3 +55,35 @@ const inputFields = {
   textArea: document.getElementById("text-area"),
   checkBox: document.getElementById("check-box"),
 };
+
+const validationMessages = {
+  name: {
+    required: "Please enter your name",
+    short: "Name must be at least 2 characters",
+  },
+  lastName: {
+    required: "Please enter your last name",
+    short: "Last name must be at least 3 characters",
+  },
+  email: {
+    required: "Email is required",
+    invalid: "Please enter a valid email",
+  },
+  radio: {
+    required: "option is mandatory",
+    invalid: "Please enter an option",
+  },
+  textArea: {
+    required: "please provide us feedback",
+    invalid: "Please enter an feedback at least 30 characters",
+  },
+  checkBox: {
+    required: "please agree on term and conditions",
+    invalid: "check it",
+  },
+};
+
+function showError(field) {
+  const input = inputFields[field];
+  const errorElement = input.nextElementSibling;
+}

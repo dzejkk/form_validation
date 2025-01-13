@@ -15,6 +15,7 @@
           <div>
             <label class="input-name" for="name">First Name*</label>
             <input required type="text" name="name" id="name" />
+            <span class="error" aria-live="polite"></span>
           </div>
           <div>
             <label class="input-name" for="last-name">Last Name*</label>
@@ -25,6 +26,7 @@
               id="last-name"
               minlength="3"
             />
+            <span class="error" aria-live="polite"></span>
           </div>
         </fieldset>
 
@@ -42,6 +44,7 @@
               name="radio-general-enquiry"
               id="radio-btn"
             />
+            <span class="error" aria-live="polite"></span>
             <label for="radio-general-enquiry">General Enquiry</label>
           </div>
 
@@ -52,6 +55,7 @@
               name="radio-general-enquiry"
               id="radio-btn"
             />
+            <span class="error" aria-live="polite"></span>
             <label for="radio-support-request">Support Request</label>
           </div>
         </fieldset>
@@ -60,11 +64,13 @@
           <div class="text-area-wrap">
             <label class="input-name" for="text-area">Message *</label>
             <textarea name="text-area" id="text-area"></textarea>
+            <span class="error" aria-live="polite"></span>
           </div>
         </fieldset>
 
         <fieldset>
           <input required type="checkbox" name="check-box" id="check-box" />
+          <span class="error" aria-live="polite"></span>
           <label for="check-box"
             >I consent to beign contacted byt the team *</label
           >
