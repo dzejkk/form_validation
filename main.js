@@ -70,16 +70,16 @@ const validationMessages = {
     invalid: "Please enter a valid email",
   },
   radio: {
-    required: "option is mandatory",
-    invalid: "Please enter an option",
+    required: "Option is mandatory",
+    invalid: "Please select an option",
   },
   textArea: {
-    required: "please provide us feedback",
-    invalid: "Please enter an feedback at least 30 characters",
+    required: "Please provide us feedback",
+    invalid: "Feedback must be at least 30 characters",
   },
   checkBox: {
-    required: "please agree on term and conditions",
-    invalid: "check it",
+    required: "Please agree to the terms and conditions",
+    invalid: "Please check this box",
   },
 };
 
@@ -102,3 +102,29 @@ function showError(field) {
 
   errorElement.className = "error active";
 }
+
+// Adding input event listeners
+Object.keys(inputFields).forEach((field) => {
+  const input = inputFields[field];
+  input.addEventListener("input", () => {
+    showError(field);
+  });
+});
+
+// Handle form submit
+Form.addEventListener("submit", (e) => {
+  let hasError = false;
+
+  // Check all fields
+  Object.keys(inputFields).forEach((field) => {
+    if (!inputFields[field].validity.valid) {
+      hasError = true;
+      showError(field);
+    }
+  });
+
+  // If there are errors, prevent form submission
+  if (hasError) {
+    e.preventDefault();
+  }
+});

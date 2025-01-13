@@ -9,12 +9,12 @@
   </head>
   <body>
     <div class="wrapper">
-      <form action="" novalidate>
+      <form id="form" action="" novalidate>
         <h1>Contact Us</h1>
         <fieldset class="fieldset-1">
           <div>
             <label class="input-name" for="name">First Name*</label>
-            <input required type="text" name="name" id="name" />
+            <input required type="text" name="name" id="name" minlength="1" />
             <span class="error" aria-live="polite"></span>
           </div>
           <div>
@@ -63,7 +63,7 @@
         <fieldset>
           <div class="text-area-wrap">
             <label class="input-name" for="text-area">Message *</label>
-            <textarea name="text-area" id="text-area"></textarea>
+            <textarea name="text-area" id="text-area" minlength="30" required></textarea>
             <span class="error" aria-live="polite"></span>
           </div>
         </fieldset>

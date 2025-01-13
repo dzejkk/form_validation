@@ -49,7 +49,15 @@ input:required {
 
 */
 
-
-input:user-invalid {  /*nefunguje neviem preco */
+input:user-invalid {
+  /*nefunguje neviem preco */
   border: 2px solid red;
+}
+
+.error {
+  color: red;
+}
+
+.active {
+  display: block;
 }
