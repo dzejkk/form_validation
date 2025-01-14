@@ -51,7 +51,7 @@ const inputFields = {
   name: document.getElementById("name"),
   lastName: document.getElementById("last-name"),
   email: document.getElementById("email"),
-  radio: document.getElementById("radio-btn"), //  pozor viac elementov
+  radio: document.querySelectorAll('input[name="radio-general-enquiry"]'), // Handle multiple radio buttons
   textArea: document.getElementById("text-area"),
   checkBox: document.getElementById("check-box"),
 };
@@ -83,9 +83,38 @@ const validationMessages = {
   },
 };
 
+// Function to find the associated error element dynamically
+function getErrorElement(input) {
+  if (input.name === "options") {
+    return document.getElementById("radio-error");
+  }
+  const container = input.closest(
+    "div, .radio-wrap, .text-area-wrap, fieldset"
+  );
+  return container ? container.querySelector(".error") : null;
+}
+
+// show error functio
 function showError(field) {
   const input = inputFields[field];
-  const errorElement = input.nextElementSibling; // nahradit custom
+  const errorElement =
+    field === "radio"
+      ? document.getElementById("radio-error") // Use the specific container
+      : getErrorElement(input);
+
+  if (!errorElement) return;
+
+  if (field === "radio") {
+    const isChecked = Array.from(input).some((radio) => radio.checked);
+    if (isChecked) {
+      errorElement.textContent = "";
+      errorElement.className = "error";
+      return;
+    }
+    errorElement.textContent = validationMessages[field].required;
+    errorElement.className = "error active";
+    return;
+  }
 
   if (input.validity.valid) {
     errorElement.textContent = "";
@@ -106,9 +135,18 @@ function showError(field) {
 // Adding input event listeners
 Object.keys(inputFields).forEach((field) => {
   const input = inputFields[field];
-  input.addEventListener("input", () => {
-    showError(field);
-  });
+
+  if (field === "radio") {
+    input.forEach((radio) => {
+      radio.addEventListener("change", () => {
+        showError(field);
+      });
+    });
+  } else {
+    input.addEventListener("input", () => {
+      showError(field);
+    });
+  }
 });
 
 // Handle form submit
@@ -117,7 +155,15 @@ Form.addEventListener("submit", (e) => {
 
   // Check all fields
   Object.keys(inputFields).forEach((field) => {
-    if (!inputFields[field].validity.valid) {
+    if (field === "radio") {
+      const isChecked = Array.from(inputFields[field]).some(
+        (radio) => radio.checked
+      );
+      if (!isChecked) {
+        hasError = true;
+        showError(field);
+      }
+    } else if (!inputFields[field].validity.valid) {
       hasError = true;
       showError(field);
     }

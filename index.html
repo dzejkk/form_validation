@@ -14,7 +14,7 @@
         <fieldset class="fieldset-1">
           <div>
             <label class="input-name" for="name">First Name*</label>
-            <input required type="text" name="name" id="name" minlength="1" />
+            <input required type="text" name="name" id="name" minlength="2" />
             <span class="error" aria-live="polite"></span>
           </div>
           <div>
@@ -38,26 +38,26 @@
 
         <fieldset class="fieldset-3">
           <div class="radio-wrap">
-            <input
-              required
-              type="radio"
-              name="radio-general-enquiry"
-              id="radio-btn"
-            />
-            <span class="error" aria-live="polite"></span>
-            <label for="radio-general-enquiry">General Enquiry</label>
-          </div>
+            <legend>Select your options *</legend>
+            <label class="label-wrap" for="radio-general-enquiry"
+              ><input
+                required
+                type="radio"
+                name="radio-general-enquiry"
+                id="radio-btn"
+              />General Enquiry</label
+            >
 
-          <div class="radio-wrap">
-            <input
-              required
-              type="radio"
-              name="radio-general-enquiry"
-              id="radio-btn"
-            />
-            <span class="error" aria-live="polite"></span>
-            <label for="radio-support-request">Support Request</label>
+            <label class="label-wrap" for="radio-support-request"
+              ><input
+                required
+                type="radio"
+                name="radio-general-enquiry"
+                id="radio-btn"
+              />Support Request</label
+            >
           </div>
+          <span id="radio-error" class="error" aria-live="polite"></span>
         </fieldset>
 
         <fieldset>

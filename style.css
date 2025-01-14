@@ -32,12 +32,21 @@ fieldset {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
+  flex-direction: column;
 }
 
-.radio-wrap {
+.label-wrap {
   border: 1px solid black;
   padding: 0.5rem;
   border-radius: 12px;
+}
+
+#radio-error {
+  display: block;
+}
+
+legend {
+  margin-block: 0.5rem;
 }
 
 /* VALIDATION */
