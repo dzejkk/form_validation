@@ -1,13 +1,53 @@
+:root {
+  /* Layout*/
+
+  --wrapper-Mobile: 375px;
+  --wrapper-Desktop: 1440px;
+
+  /* Colors */
+
+  /*Primary*/
+
+  --Green-200: hsl(148, 38%, 91%);
+  --Green-600: hsl(169, 82%, 27%);
+  --Red: hsl(0, 66%, 54%);
+
+  /*Neutral*/
+
+  --White: hsl(0, 0%, 100%);
+  --Grey-500: hsl(186, 15%, 59%);
+  --Grey-900: hsl(187, 24%, 22%);
+
+  /* Typography*/
+
+  --base-Font-size: 16px;
+
+  --font-weight-400: 400;
+  --font-weight-700: 700;
+}
+
 /* BASIC LAYOUT*/
+
+* {
+  padding: 0;
+  margin: 0;
+}
 
 body {
   min-height: 80dvh;
   display: grid;
   place-items: center;
+  font-family: "Karla", serif;
+  background-color: var(--Green-200);
 }
 
-fieldset {
+form > * {
   /* border: 1px solid transparent; */
+  margin-block-end: 1rem;
+}
+
+label {
+  margin-block-end: 0.5rem;
 }
 
 .wrapper {
@@ -24,8 +64,16 @@ fieldset {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
-  /*justify-content: center;
-  align-items: center;*/
+  justify-content: center;
+  align-items: center;
+}
+
+.fieldset-2 {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 
 .fieldset-3 {
@@ -69,4 +117,54 @@ input:user-invalid {
 
 .active {
   display: block;
+}
+
+/* BLOCK */
+
+form {
+  background-color: var(--White);
+  height: 30rem;
+  padding: 1rem;
+  border-radius: 12px;
+}
+
+fieldset {
+  border: transparent;
+}
+
+.name {
+  width: 15rem;
+}
+
+.last-name {
+  width: 15rem;
+}
+
+#name {
+  width: 100%;
+  height: 2rem;
+  border-radius: 7px;
+  border: 1px solid var(--Grey-500);
+}
+
+#last-name {
+  width: 100%;
+  height: 2rem;
+  border-radius: 7px;
+  border: 1px solid var(--Grey-500);
+}
+
+.input-name {
+  font-size: 0.75rem;
+}
+
+#email {
+  width: 100%;
+  height: 2rem;
+  border-radius: 7px;
+  border: 1px solid var(--Grey-500);
+}
+
+.emial-wrap {
+  width: 31rem;
 }

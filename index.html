@@ -6,18 +6,24 @@
     <title>Vite App</title>
     <script src="main.js" defer></script>
     <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&family=Overpass:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <div class="wrapper">
       <form id="form" action="" novalidate>
         <h1>Contact Us</h1>
         <fieldset class="fieldset-1">
-          <div>
+          <div class="name">
             <label class="input-name" for="name">First Name*</label>
             <input required type="text" name="name" id="name" minlength="2" />
             <span class="error" aria-live="polite"></span>
           </div>
-          <div>
+          <div class="last-name">
             <label class="input-name" for="last-name">Last Name*</label>
             <input
               required
@@ -30,10 +36,18 @@
           </div>
         </fieldset>
 
-        <fieldset>
-          <label class="input-name" for="email">Email Adress *</label>
-          <input type="email" name="email" id="email" required minlength="8" />
-          <span class="error" aria-live="polite"></span>
+        <fieldset class="fieldset-2">
+          <div class="emial-wrap">
+            <label class="input-name" for="email">Email Adress *</label>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              required
+              minlength="8"
+            />
+            <span class="error" aria-live="polite"></span>
+          </div>
         </fieldset>
 
         <fieldset class="fieldset-3">
@@ -41,6 +55,7 @@
             <legend>Select your options *</legend>
             <label class="label-wrap" for="radio-general-enquiry"
               ><input
+                value="option1"
                 required
                 type="radio"
                 name="radio-general-enquiry"
@@ -50,6 +65,7 @@
 
             <label class="label-wrap" for="radio-support-request"
               ><input
+                value="option2"
                 required
                 type="radio"
                 name="radio-general-enquiry"
@@ -75,10 +91,10 @@
 
         <fieldset>
           <input required type="checkbox" name="check-box" id="check-box" />
-          <span class="error" aria-live="polite"></span>
           <label for="check-box"
             >I consent to beign contacted byt the team *</label
           >
+          <span class="error" aria-live="polite"></span>
         </fieldset>
 
         <button class="submit-btn" id="submit-btn">Submit</button>

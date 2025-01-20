@@ -1,4 +1,4 @@
-///////////////////////* MOST SIMPLE APROACH USING CONSTRAINS API */
+///////////////////////* MOST SIMPLE APROACH USING CONSTRAINS API *///////////////
 
 /*
 
@@ -43,7 +43,7 @@ function showError() {
 
 */
 
-//////////////* EXPANDED VERSION TO WHOLE FORM */
+//////////////* EXPANDED VERSION TO WHOLE FORM *////////////////////////////
 
 const Form = document.getElementById("form");
 
@@ -96,7 +96,7 @@ function getErrorElement(input) {
 
 // show error functio
 function showError(field) {
-  const input = inputFields[field];
+  const input = inputFields[field]; // finds input
   const errorElement =
     field === "radio"
       ? document.getElementById("radio-error") // Use the specific container
