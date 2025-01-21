@@ -109,16 +109,6 @@ label {
   justify-content: center;
   align-items: center;
 }
-.label-wrap {
-  display: flex block;
-  border: 1px solid var(--Grey-500);
-  padding: 0.5rem;
-  border-radius: 7px;
-  width: 15rem;
-  height: 2.5rem;
-  justify-content: start;
-  align-items: center;
-}
 
 #radio-error {
   display: block;
@@ -143,17 +133,25 @@ legend {
 
 /*MARK: /* VALIDATION */
 
+#name:user-invalid,
+#last-name:user-invalid,
+#email:user-invalid,
+#text-area:user-invalid,
+#check-box:user-invalid {
+  border: 1px solid red;
+}
+
+/* Style the label not radio button it self,  when it contains an invalid radio button */
+
+.label-wrap:has(.radio-btn:user-invalid) {
+  border-color: var(--Red);
+}
+
 /*
-input:required {
-    border: 2px solid black;
-}
-
-*/
-
-input:user-invalid {
-  /*nefunguje neviem preco */
-  border: 2px solid red;
-}
+  That's fantastic! 🎉 I'm glad to hear that .label-wrap:has(.radio-btn:user-invalid) 
+  is working perfectly for you! It’s such a clean and modern way to handle
+  styling based on the state of child elements, and it’s great to see it in action.
+  */
 
 .error {
   color: var(--Red);
@@ -340,7 +338,7 @@ legend {
   width: 15rem;
   height: 2.5rem;
   cursor: pointer;
-  transition: border-color 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
 }
 
 /* Style the label wrapper when radio is checked */
