@@ -40,11 +40,12 @@ body {
   place-items: center;
   font-family: "Karla", serif;
   background-color: var(--Green-200);
+  accent-color: var(--Green-600);
 }
 
 form > * {
   /* border: 1px solid transparent; */
-  margin-block-end: 1.5rem;
+  margin-block-end: 1.25rem;
 }
 
 label {
@@ -82,7 +83,6 @@ label {
 
 .fieldset-3 {
   display: flex;
-  gap: 1rem;
   flex-wrap: wrap;
   flex-direction: column;
   justify-content: center;
@@ -101,27 +101,33 @@ label {
   padding-block: 0.5rem;
 }
 
+.radio-wrap {
+  width: 31rem;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
 .label-wrap {
   display: flex block;
   border: 1px solid var(--Grey-500);
   padding: 0.5rem;
   border-radius: 7px;
   width: 15rem;
+  height: 2.5rem;
+  justify-content: start;
+  align-items: center;
 }
 
 #radio-error {
   display: block;
+  align-self: flex-start;
+  margin-left: 2rem;
 }
 
 legend {
   margin-block: 0.5rem;
-}
-
-.radio-wrap {
-  width: 31rem;
-  display: flex;
-  flex-direction: row;
-  gap: 1rem;
 }
 
 @media (width < 700px) {
@@ -155,7 +161,7 @@ input:user-invalid {
 
 .active {
   display: block;
-  font-size: 1rem;
+  font-size: 0.85rem;
   padding: 0;
   margin: 0;
 }
@@ -184,14 +190,18 @@ fieldset {
 
 #name {
   width: 100%;
-  height: 2rem;
+  height: 2.5rem;
   border-radius: 7px;
   border: 1px solid var(--Grey-500);
 }
 
+#name:active {
+  border: 1px solid var(--Green-600);
+}
+
 #last-name {
   width: 100%;
-  height: 2rem;
+  height: 2.5rem;
   border-radius: 7px;
   border: 1px solid var(--Grey-500);
 }
@@ -202,7 +212,7 @@ fieldset {
 
 #email {
   width: 100%;
-  height: 2rem;
+  height: 2.5rem;
   border-radius: 7px;
   border: 1px solid var(--Grey-500);
 }
@@ -215,12 +225,6 @@ fieldset {
   .emial-wrap {
     width: 15rem;
   }
-}
-
-#radio-btn {
-  width: 2rem;
-  vertical-align: center;
-  color: var(--Grey-500);
 }
 
 .text-area-wrap {
@@ -245,6 +249,12 @@ fieldset {
   font-weight: var(--font-weight-700);
   padding: 1rem;
   margin-inline: 1.25rem;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
 }
 
 h1 {
@@ -255,4 +265,87 @@ h1 {
 legend {
   font-size: 0.75rem;
   margin-left: 2rem;
+}
+
+#name:focus,
+#last-name:focus,
+#email:focus,
+#text-area:focus {
+  outline: none;
+  border: 2px solid var(--Green-600);
+}
+
+#name,
+#last-name,
+#email,
+#text-area {
+  transition: border 0.2s ease-in-out;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+/*added ai  to style radios */
+
+/* Style the radio button itself */
+
+.radio-btn {
+  appearance: none;
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 2px solid var(--Grey-500);
+  border-radius: 50%;
+  margin-right: 0.75rem;
+  position: relative;
+  cursor: pointer;
+}
+
+/* Style the checked state */
+.radio-btn:checked {
+  border-color: var(--Green-600);
+  background-color: var(--White);
+}
+
+/* Create the inner circle when checked */
+.radio-btn:checked::after {
+  content: "";
+  width: 0.75rem;
+  height: 0.75rem;
+  background: var(--Green-600);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+}
+
+/* Style the hover state */
+.radio-btn:hover {
+  border-color: var(--Green-600);
+}
+
+/* Style the focus state */
+.radio-btn:focus {
+  outline: none;
+  border-color: var(--Green-600);
+  box-shadow: 0 0 0 2px var(--Green-200);
+}
+
+/* Style the label wrapper */
+.label-wrap {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--Grey-500);
+  padding: 0.5rem;
+  border-radius: 7px;
+  width: 15rem;
+  height: 2.5rem;
+  cursor: pointer;
+  transition: border-color 0.2s ease-in-out;
+}
+
+/* Style the label wrapper when radio is checked */
+.radio-btn:checked + .label-wrap,
+.label-wrap:has(.radio-btn:checked) {
+  border-color: var(--Green-600);
+  background-color: var(--Green-200);
 }
