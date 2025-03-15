@@ -172,5 +172,21 @@ Form.addEventListener("submit", (e) => {
   // If there are errors, prevent form submission
   if (hasError) {
     e.preventDefault();
+  } else {
   }
+  collectData();
 });
+
+// colect data //
+
+function collectData() {
+  let formData = {};
+
+  Object.keys(inputFields).forEach((input) => {
+    const inputField = inputFields[input];
+
+    formData[input] = inputField.value;
+  });
+
+  console.log(formData);
+}
