@@ -178,15 +178,26 @@ Form.addEventListener("submit", (e) => {
 });
 
 // colect data //
-
 function collectData() {
   let formData = {};
 
   Object.keys(inputFields).forEach((input) => {
     const inputField = inputFields[input];
 
-    formData[input] = inputField.value;
+    if (input === "radio") {
+      let radioCheck = Array.from(inputField);
+      const filtered = radioCheck.find((item) => item.checked === true);
+
+      if (filtered) {
+        formData["radio"] = filtered.value;
+      }
+    } else if (input === "checkBox") {
+      formData["consent"] = inputField.checked; // This will store true or false
+    } else {
+      formData[input] = inputField.value;
+    }
   });
 
   console.log(formData);
+  return formData;
 }
