@@ -1,3 +1,8 @@
+import emailjs from "@emailjs/browser";
+
+emailjs.init(import.meta.env.VITE_EMAIL_USER_ID);
+console.log("Initialized with User ID:", import.meta.env.VITE_EMAIL_USER_ID);
+
 ///////////////////////* MOST SIMPLE APROACH USING CONSTRAINS API *///////////////
 
 /*
@@ -149,11 +154,13 @@ Object.keys(inputFields).forEach((field) => {
   }
 });
 
-// Handle form submit
+//MARK:// SEND EMAIL  //
+
 Form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  console.log("form submited");
   let hasError = false;
 
-  // Check all fields
   Object.keys(inputFields).forEach((field) => {
     if (field === "radio") {
       const isChecked = Array.from(inputFields[field]).some(
@@ -168,36 +175,40 @@ Form.addEventListener("submit", (e) => {
       showError(field);
     }
   });
-
-  // If there are errors, prevent form submission
   if (hasError) {
-    e.preventDefault();
   } else {
+    const data = collectData();
+    console.log("Sending email with:", data);
+
+    emailjs
+      .send(
+        import.meta.env.VITE_EMAIL_SERVICE_ID,
+        import.meta.env.VITE_EMAIL_TEMPLATE_ID,
+        data
+      )
+      .then(() => console.log("Email sent!"))
+      .catch((error) => console.error("Error:", error));
   }
-  collectData();
 });
 
-// colect data //
+// cCOLECT DATA //
+
 function collectData() {
   let formData = {};
-
   Object.keys(inputFields).forEach((input) => {
     const inputField = inputFields[input];
-
     if (input === "radio") {
       let radioCheck = Array.from(inputField);
       const filtered = radioCheck.find((item) => item.checked === true);
-
       if (filtered) {
         formData["radio"] = filtered.value;
       }
     } else if (input === "checkBox") {
-      formData["consent"] = inputField.checked; // This will store true or false
+      formData["consent"] = inputField.checked;
     } else {
       formData[input] = inputField.value;
     }
   });
-
-  console.log(formData);
+  console.log("Collected data:", formData);
   return formData;
 }
