@@ -158,7 +158,7 @@ Object.keys(inputFields).forEach((field) => {
 
 Form.addEventListener("submit", (e) => {
   e.preventDefault();
-  console.log("form submited");
+
   let hasError = false;
 
   Object.keys(inputFields).forEach((field) => {
@@ -188,13 +188,15 @@ Form.addEventListener("submit", (e) => {
       )
       .then(() => {
         console.log("Email sent!");
-        showToast("Thank you for your message", true);
+        showModal("successs", "Your submistion was send !", true);
+        //showToast("Thank you for your message", true);
         Form.reset();
       })
 
       .catch((error) => {
         console.error("Error:", error);
-        showToast("Failed to send message"), false;
+        showModal("failed", "Your submition failed", false);
+        //showToast("Failed to send message"), false;
       });
   }
 });
@@ -223,28 +225,69 @@ function collectData() {
 
 /* shot toaast */
 
-function showToast(message, isSuccess = true) {
-  const toast = document.createElement("div");
+// function showToast(message, isSuccess = true) {
+//   const toast = document.createElement("div");
 
-  toast.style.position = "fixed";
-  toast.style.bottom = "20px";
-  toast.style.right = "20px";
-  toast.style.padding = "12px 20px";
-  toast.style.borderRadius = "4px";
-  toast.style.color = "white";
-  toast.style.backgroundColor = isSuccess ? "#4CAF50" : "#f44336";
-  toast.style.boxShadow = "0 2px 10px rgba(0,0,0,0.2)";
-  toast.style.zIndex = "1000";
-  toast.style.transition = "opacity 0.5s ease";
+//   toast.style.position = "fixed";
+//   toast.style.bottom = "20px";
+//   toast.style.right = "20px";
+//   toast.style.padding = "12px 20px";
+//   toast.style.borderRadius = "4px";
+//   toast.style.color = "white";
+//   toast.style.backgroundColor = isSuccess ? "#4CAF50" : "#f44336";
+//   toast.style.boxShadow = "0 2px 10px rgba(0,0,0,0.2)";
+//   toast.style.zIndex = "1000";
+//   toast.style.transition = "opacity 0.5s ease";
 
-  toast.textContent = message;
+//   toast.textContent = message;
 
-  document.body.appendChild(toast);
+//   document.body.appendChild(toast);
 
-  setTimeout(() => {
-    toast.style.opacity = "0";
-    setTimeout(() => {
-      document.body.removeChild(toast);
-    }, 500);
-  }, 3000);
+//   setTimeout(() => {
+//     toast.style.opacity = "0";
+//     setTimeout(() => {
+//       document.body.removeChild(toast);
+//     }, 500);
+//   }, 3000);
+// }
+
+/* MORE COMPLICATED APROACH WITH  DIALOG */
+
+function showModal(title, message, isSuccess = true) {
+  const modal = document.getElementById("notification-dialog");
+  const modalTitle = document.getElementById("modal-title");
+  const modalMessage = document.getElementById("modal-message");
+
+  modalTitle.textContent = title;
+  modalMessage.textContent = message;
+
+  if (isSuccess) {
+    modalTitle.style.color = "hsl(169, 82%, 27%)";
+  } else {
+    modalTitle.style.color = "hsl(0, 66%, 54%)";
+  }
+
+  modal.showModal();
 }
+
+function setupEventListener() {
+  const modal = document.getElementById("notification-dialog");
+  const closeBtn = document.getElementById("close-modal");
+  const okBtn = document.getElementById("modal-ok-btn");
+
+  closeBtn.addEventListener("click", () => {
+    modal.close();
+  });
+
+  okBtn.addEventListener("click", () => {
+    modal.close();
+  });
+
+  modal.addEventListener("click", (event) => {
+    if (event.target === modal) {
+      modal.close();
+    }
+  });
+}
+
+document.addEventListener("DOMContentLoaded", setupEventListener);
