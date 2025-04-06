@@ -186,8 +186,16 @@ Form.addEventListener("submit", (e) => {
         import.meta.env.VITE_EMAIL_TEMPLATE_ID,
         data
       )
-      .then(() => console.log("Email sent!"))
-      .catch((error) => console.error("Error:", error));
+      .then(() => {
+        console.log("Email sent!");
+        showToast("Thank you for your message", true);
+        Form.reset();
+      })
+
+      .catch((error) => {
+        console.error("Error:", error);
+        showToast("Failed to send message"), false;
+      });
   }
 });
 
@@ -211,4 +219,32 @@ function collectData() {
   });
   console.log("Collected data:", formData);
   return formData;
+}
+
+/* shot toaast */
+
+function showToast(message, isSuccess = true) {
+  const toast = document.createElement("div");
+
+  toast.style.position = "fixed";
+  toast.style.bottom = "20px";
+  toast.style.right = "20px";
+  toast.style.padding = "12px 20px";
+  toast.style.borderRadius = "4px";
+  toast.style.color = "white";
+  toast.style.backgroundColor = isSuccess ? "#4CAF50" : "#f44336";
+  toast.style.boxShadow = "0 2px 10px rgba(0,0,0,0.2)";
+  toast.style.zIndex = "1000";
+  toast.style.transition = "opacity 0.5s ease";
+
+  toast.textContent = message;
+
+  document.body.appendChild(toast);
+
+  setTimeout(() => {
+    toast.style.opacity = "0";
+    setTimeout(() => {
+      document.body.removeChild(toast);
+    }, 500);
+  }, 3000);
 }
